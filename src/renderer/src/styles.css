@@ -467,16 +467,28 @@ input[type='number']::-webkit-outer-spin-button {
   bottom: var(--ink-bottom-hover, -22px);
 }
 
+/* Fade through this property and let the entry animation expire. With fractional
+ * scaling on Windows, the panel could otherwise stay blurry until hover (#337). */
+@property --panel-entry-opacity {
+  syntax: '<number>';
+  inherits: false;
+  initial-value: 1;
+}
+
+.panel-entry {
+  opacity: var(--panel-entry-opacity, 1);
+}
+
 @keyframes panel-slide-in {
   0% {
-    opacity: 0;
+    --panel-entry-opacity: 0;
     transform: translateX(30px);
   }
   40% {
-    opacity: 1;
+    --panel-entry-opacity: 1;
   }
   100% {
-    opacity: 1;
+    --panel-entry-opacity: 1;
     transform: translateX(0);
   }
 }
@@ -492,14 +504,14 @@ input[type='number']::-webkit-outer-spin-button {
 }
 @keyframes panel-slide-in-left {
   0% {
-    opacity: 0;
+    --panel-entry-opacity: 0;
     transform: translateX(-30px);
   }
   40% {
-    opacity: 1;
+    --panel-entry-opacity: 1;
   }
   100% {
-    opacity: 1;
+    --panel-entry-opacity: 1;
     transform: translateX(0);
   }
 }
@@ -515,10 +527,10 @@ input[type='number']::-webkit-outer-spin-button {
 }
 @keyframes panel-fade-in {
   0% {
-    opacity: 0;
+    --panel-entry-opacity: 0;
   }
   100% {
-    opacity: 1;
+    --panel-entry-opacity: 1;
   }
 }
 @keyframes panel-fade-out {

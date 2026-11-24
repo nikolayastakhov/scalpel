@@ -867,6 +867,7 @@ export default function App(): JSX.Element {
         >
           <div
             ref={animRef}
+            className="panel-entry"
             key={isHidden ? 'hidden' : `show-${showCountRef.current}`}
             style={{
               animation:
@@ -880,9 +881,9 @@ export default function App(): JSX.Element {
                       : 'panel-fade-out 0.15s ease-in both'
                     : isMounted
                       ? cursorSide === 'left'
-                        ? 'panel-slide-in-left 0.2s ease-out both'
-                        : 'panel-slide-in 0.2s ease-out both'
-                      : 'panel-fade-in 0.15s ease-out both',
+                        ? 'panel-slide-in-left 0.2s ease-out'
+                        : 'panel-slide-in 0.2s ease-out'
+                      : 'panel-fade-in 0.15s ease-out',
               width: PANEL_WIDTH,
             }}
             onMouseEnter={() => {
